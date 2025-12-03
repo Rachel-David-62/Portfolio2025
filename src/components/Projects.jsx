@@ -9,7 +9,7 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
       {/* Pour fermer la modale en cliquant à l'extérieur */}
       <div
         className="fixed inset-0 bg-[#434c48]/70 backdrop-blur-lg"
