@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&display=swap");
+@import "tailwindcss";
+
+/* Définition de la palette de couleurs en variables CSS */
+:root {
+  --sage-light: #cde3d0;
+  --matcha: #a9c6a9;
+  --celadon: #8bb59f;
+  --beige-rose: #f5ece6;
+  --graphite: #434c48;
+  --white: #ffffff;
+}
+
+/* Styles de base appliqués au corps de la page */
+body {
+  background-color: var(--beige-rose);
+  color: var(--graphite);
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Classes utilitaires pour la typographie */
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
+.font-sans {
+  font-family: "Lato", sans-serif;
+}
+
+/* Masquage de la scrollbar par défaut */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Classe réutilisable pour l'effet Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Styles pour le connecteur vertical subtil */
+.bg-linear-subtle {
+  background: linear-gradient(
+    to bottom,
+    var(--celadon) 0%,
+    var(--beige-rose) 50%,
+    var(--celadon) 100%
+  );
+  opacity: 0.5;
+}
