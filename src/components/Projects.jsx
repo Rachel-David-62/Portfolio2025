@@ -9,7 +9,7 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-1000 flex items-center justify-center p-4">
       {/* Pour fermer la modale en cliquant à l'extérieur */}
       <div
         className="fixed inset-0 bg-[#434c48]/70 backdrop-blur-lg"
@@ -66,6 +66,8 @@ const ProjectModal = ({ project, onClose }) => {
 // Composant principal de la page Projets
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  // Nouvel état pour suivre si l'écran est mobile
+  const [isMobile, setIsMobile] = useState(false);
 
   // Définition des données des projets
   const projects = [
@@ -91,14 +93,30 @@ const Projects = () => {
       fullImage: maquetteImg,
     },
   ];
-
   const openModal = (project) => {
-    setSelectedProject(project);
+    // La modale s'ouvre uniquement si l'appareil n'est PAS mobile
+    if (!isMobile) {
+      setSelectedProject(project);
+    }
   };
 
   const closeModal = () => {
     setSelectedProject(null);
   };
+
+  // Logique pour détecter la taille de l'écran (breakpoint md = 768px)
+  useEffect(() => {
+    const checkIsMobile = () => {
+      // Détecte si la largeur de la fenêtre est inférieure à 768px (breakpoint md)
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Vérifie au montage et à chaque redimensionnement
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   // Blocage/déblocage du scroll du body lors de l'ouverture de la modale
   useEffect(() => {
